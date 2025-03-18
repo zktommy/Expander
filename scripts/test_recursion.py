@@ -115,8 +115,8 @@ def gkr_prove(proof_config: ProofConfig, mpi_config: MPIConfig) -> str:
     proof_file: str = gkr_proof_file(proof_config.gkr_proof_prefix, mpi_config.cpu_ids)
     prove_command_suffix: str = \
         f"./target/release/expander-exec \
-        -f {proof_config.fs_hash_scheme} -p {proof_config.pcs_scheme} -c {proof_config.circuit} \
-        prove -w {proof_config.witness} -o {proof_file}"
+        -f {proof_config.fs_hash_scheme} -p {proof_config.pcs_scheme} \
+        prove --circuit-file {proof_config.circuit} --witness-file {proof_config.witness} --output-proof-file {proof_file}"
 
     prove_command: str = ' '.join(f"{mpi_config.mpi_prefix()} {prove_command_suffix}".split())
     print(prove_command)
