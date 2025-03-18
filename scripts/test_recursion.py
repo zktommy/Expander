@@ -134,8 +134,8 @@ def vanilla_gkr_verify_check(
 ):
     vanilla_verify_comand: str = \
         f"./target/release/expander-exec \
-        -f {proof_config.fs_hash_scheme} -p {proof_config.pcs_scheme} -c {proof_config.circuit} \
-        verify -w {proof_config.witness} -i {proof_path} -m {mpi_config.cpus()}"
+        -f {proof_config.fs_hash_scheme} -p {proof_config.pcs_scheme}  \
+        verify --circuit-file {proof_config.circuit} --witness-file {proof_config.witness} --input-proof-file {proof_path} -m {mpi_config.cpus()}"
     vanilla_verify_comand = ' '.join(vanilla_verify_comand.split())
     print(vanilla_verify_comand)
 
